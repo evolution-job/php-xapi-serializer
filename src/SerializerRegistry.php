@@ -44,6 +44,11 @@ final class SerializerRegistry implements SerializerRegistryInterface
     private $activitySerializer;
 
     /**
+     * @var StateDocumentSerializerInterface The state document serializer
+     */
+    private $stateDocumentSerializer;
+
+    /**
      * @var PersonSerializerInterface The person serializer
      */
     private $personSerializer;
@@ -142,5 +147,21 @@ final class SerializerRegistry implements SerializerRegistryInterface
     public function getPersonSerializer()
     {
         return $this->personSerializer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStateDocumentSerializer(StateDocumentSerializerInterface $serializer)
+    {
+        $this->stateDocumentSerializer = $serializer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStateDocumentSerializer()
+    {
+        return $this->stateDocumentSerializer;
     }
 }

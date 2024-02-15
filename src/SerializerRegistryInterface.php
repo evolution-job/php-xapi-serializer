@@ -101,4 +101,18 @@ interface SerializerRegistryInterface
      * @return PersonSerializerInterface|null The serializer
      */
     public function getPersonSerializer();
+
+    /**
+     * Sets the {@link StateDocumentSerializerInterface state document serializer}.
+     *
+     * @param StateDocumentSerializerInterface $serializer The serializer
+     */
+    public function setStateDocumentSerializer(StateDocumentSerializerInterface $serializer);
+
+    /**
+     * Returns the {@link StateDocumentSerializerInterface state document serializer}.
+     *
+     * @return StateDocumentSerializerInterface|null The serializer
+     */
+    public function getStateDocumentSerializer();
 }

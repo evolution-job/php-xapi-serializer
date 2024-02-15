@@ -7,6 +7,7 @@ use Xabbuh\XApi\Serializer\ActivitySerializerInterface;
 use Xabbuh\XApi\Serializer\ActorSerializerInterface;
 use Xabbuh\XApi\Serializer\DocumentDataSerializerInterface;
 use Xabbuh\XApi\Serializer\PersonSerializerInterface;
+use Xabbuh\XApi\Serializer\StateDocumentSerializerInterface;
 use Xabbuh\XApi\Serializer\StatementResultSerializerInterface;
 use Xabbuh\XApi\Serializer\StatementSerializerInterface;
 
@@ -51,5 +52,11 @@ class SerializerRegistrySpec extends ObjectBehavior
     {
         $this->setPersonSerializer($personSerializer);
         $this->getPersonSerializer()->shouldReturn($personSerializer);
+    }
+
+    function it_stores_a_state_document_serializer_for_later_retrieval(StateDocumentSerializerInterface $stateDocumentSerializer)
+    {
+        $this->setStateDocumentSerializer($stateDocumentSerializer);
+        $this->getStateDocumentSerializer()->shouldReturn($stateDocumentSerializer);
     }
 }

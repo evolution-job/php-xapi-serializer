@@ -59,4 +59,11 @@ interface SerializerFactoryInterface
      * @return PersonSerializerInterface
      */
     public function createPersonSerializer();
+
+    /**
+     * Creates a state document serializer.
+     *
+     * @return StateDocumentSerializerInterface
+     */
+    public function createStateDocumentSerializer();
 }
