@@ -3,9 +3,6 @@ CHANGELOG
 
 3.0.0
 -----
-
-* dropped support for PHP < 7.1
-
 * added an `ActivitySerializerInterface` that abstracts the serialization of an activity
 
 * added a `PersonSerializerInterface` that abstracts the serialization of an activity
@@ -25,6 +22,16 @@ CHANGELOG
   concrete classes exist for the `ActivitySerializerInterface`, `ActorSerializerInterface`,
   `DocumentDataSerializerInterface`, `PersonSerializerInterface`, `StatementResultSerializerInterface`,
   and `StatementSerializerInterface`
+
+2.3.0
+-----
+
+* dropped support for `1.x` and `2.x` releases of the `php-xapi/model` package
+  (they are incompatible with PHP 7.2+)
+* added support for PHP 8
+* dropped support for PHP 7.1
+* dropped support for PHP 7.0
+* dropped support for PHP 5.x
 
 2.2.0
 -----
