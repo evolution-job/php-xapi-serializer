@@ -12,6 +12,7 @@
 namespace Xabbuh\XApi\Serializer\Tests;
 
 use Xabbuh\XApi\DataFixtures\DocumentFixtures;
+use Xabbuh\XApi\Model\DocumentData;
 use XApi\Fixtures\Json\DocumentJsonFixtures;
 
 /**
@@ -26,16 +27,16 @@ abstract class DocumentDataSerializerTest extends SerializerTest
         $this->documentDataSerializer = $this->createDocumentDataSerializer();
     }
 
-    public function testDeserializeDocumentData()
+    public function testDeserializeDocumentData(): void
     {
         $documentData = $this->documentDataSerializer->deserializeDocumentData(DocumentJsonFixtures::getDocument());
 
-        $this->assertInstanceOf('\Xabbuh\XApi\Model\DocumentData', $documentData);
-        $this->assertEquals('foo', $documentData['x']);
-        $this->assertEquals('bar', $documentData['y']);
+        $this->assertInstanceOf(DocumentData::class, $documentData);
+        $this->assertSame('foo', $documentData['x']);
+        $this->assertSame('bar', $documentData['y']);
     }
 
-    public function testSerializeDocumentData()
+    public function testSerializeDocumentData(): void
     {
         $documentData = DocumentFixtures::getDocumentData();
 

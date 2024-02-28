@@ -11,6 +11,7 @@
 
 namespace Xabbuh\XApi\Serializer\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\DataFixtures\StatementFixtures;
 use Xabbuh\XApi\Model\Statement;
 use XApi\Fixtures\Json\StatementJsonFixtures;
@@ -27,19 +28,17 @@ abstract class StatementSerializerTest extends SerializerTest
         $this->statementSerializer = $this->createStatementSerializer();
     }
 
-    /**
-     * @dataProvider serializeData
-     */
-    public function testSerializeStatement(Statement $statement, $expectedJson)
+    #[DataProvider('serializeData')]
+    public function testSerializeStatement(Statement $statement, string $expectedJson): void
     {
         $this->assertJsonStringEqualsJsonString($expectedJson, $this->statementSerializer->serializeStatement($statement));
     }
 
-    public function serializeData()
+    public static function serializeData(): array
     {
-        $testCases = array();
+        $testCases = [];
 
-        foreach ($this->buildSerializeTestCases('Statement') as $fixtures) {
+        foreach (self::buildSerializeTestCases('Statement') as $fixtures) {
             if ($fixtures[0] instanceof Statement) {
                 if ($fixtures[0]->getVerb()->isVoidVerb()) {
                     $fixtures[0] = StatementFixtures::getVoidingStatement(StatementFixtures::DEFAULT_STATEMENT_ID);
@@ -52,33 +51,28 @@ abstract class StatementSerializerTest extends SerializerTest
         return $testCases;
     }
 
-    /**
-     * @dataProvider deserializeData
-     */
-    public function testDeserializeStatement($json, Statement $expectedStatement)
+    #[DataProvider('deserializeData')]
+    public function testDeserializeStatement($json, Statement $expectedStatement): void
     {
-        $attachments = array();
+        $attachments = [];
 
         if (null !== $expectedStatement->getAttachments()) {
             foreach ($expectedStatement->getAttachments() as $attachment) {
-                $attachments[$attachment->getSha2()] = array(
-                    'type' => $attachment->getContentType(),
-                    'content' => $attachment->getContent(),
-                );
+                $attachments[$attachment->getSha2()] = ['type' => $attachment->getContentType(), 'content' => $attachment->getContent()];
             }
         }
 
         $statement = $this->statementSerializer->deserializeStatement($json, $attachments);
 
-        $this->assertInstanceOf('Xabbuh\XApi\Model\Statement', $statement);
+        $this->assertInstanceOf(Statement::class, $statement);
         $this->assertTrue($expectedStatement->equals($statement));
     }
 
-    public function deserializeData()
+    public static function deserializeData(): array
     {
-        $testCases = array();
+        $testCases = [];
 
-        foreach ($this->buildDeserializeTestCases('Statement') as $fixtures) {
+        foreach (self::buildDeserializeTestCases('Statement') as $fixtures) {
             if ($fixtures[1] instanceof Statement) {
                 if ($fixtures[1]->getVerb()->isVoidVerb()) {
                     $fixtures[1] = StatementFixtures::getVoidingStatement(StatementFixtures::DEFAULT_STATEMENT_ID);
@@ -91,15 +85,15 @@ abstract class StatementSerializerTest extends SerializerTest
         return $testCases;
     }
 
-    public function testDeserializeStatementCollection()
+    public function testDeserializeStatementCollection(): void
     {
-        /** @var \Xabbuh\XApi\Model\Statement[] $statements */
+        /** @var Statement[] $statements */
         $statements = $this->statementSerializer->deserializeStatements(
             StatementJsonFixtures::getStatementCollection()
         );
         $expectedCollection = StatementFixtures::getStatementCollection();
 
-        $this->assertSame(count($expectedCollection), count($statements));
+        $this->assertCount(count($expectedCollection), $statements);
 
         foreach ($expectedCollection as $index => $expectedStatement) {
             $this->assertTrue($expectedStatement->equals($statements[$index]));

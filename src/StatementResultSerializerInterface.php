@@ -27,7 +27,7 @@ interface StatementResultSerializerInterface
      *
      * @return string The serialized statement result
      */
-    public function serializeStatementResult(StatementResult $statementResult);
+    public function serializeStatementResult(StatementResult $statementResult): string;
 
     /**
      * Parses a serialized statement result.
@@ -39,5 +39,5 @@ interface StatementResultSerializerInterface
      *
      * @return StatementResult The parsed statement result
      */
-    public function deserializeStatementResult($data, array $attachments = array());
+    public function deserializeStatementResult($data, array $attachments = []): StatementResult;
 }

@@ -11,6 +11,7 @@
 
 namespace Xabbuh\XApi\Serializer\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\Actor;
 
 /**
@@ -25,33 +26,29 @@ abstract class ActorSerializerTest extends SerializerTest
         $this->actorSerializer = $this->createActorSerializer();
     }
 
-    /**
-     * @dataProvider serializeData
-     */
-    public function testSerializeActor(Actor $actor, $expectedJson)
+    #[DataProvider('serializeData')]
+    public function testSerializeActor(Actor $actor, string $expectedJson): void
     {
         $this->assertJsonStringEqualsJsonString($expectedJson, $this->actorSerializer->serializeActor($actor));
     }
 
-    public function serializeData()
+    public static function serializeData(): array
     {
-        return $this->buildSerializeTestCases('Actor');
+        return self::buildSerializeTestCases('Actor');
     }
 
-    /**
-     * @dataProvider deserializeData
-     */
-    public function testDeserializeActor($json, Actor $expectedActor)
+    #[DataProvider('deserializeData')]
+    public function testDeserializeActor($json, Actor $expectedActor): void
     {
         $actor = $this->actorSerializer->deserializeActor($json);
 
-        $this->assertInstanceOf('Xabbuh\XApi\Model\Actor', $actor);
+        $this->assertInstanceOf(Actor::class, $actor);
         $this->assertTrue($expectedActor->equals($actor), 'Deserialized actor has the expected properties');
     }
 
-    public function deserializeData()
+    public static function deserializeData(): array
     {
-        return $this->buildDeserializeTestCases('Actor');
+        return self::buildDeserializeTestCases('Actor');
     }
 
     abstract protected function createActorSerializer();

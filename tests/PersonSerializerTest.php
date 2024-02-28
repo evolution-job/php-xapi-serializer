@@ -11,6 +11,7 @@
 
 namespace Xabbuh\XApi\Serializer\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\Person;
 
 /**
@@ -20,22 +21,20 @@ abstract class PersonSerializerTest extends SerializerTest
 {
     private $personSerializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->personSerializer = $this->createPersonSerializer();
     }
 
-    /**
-     * @dataProvider serializeData
-     */
-    public function testSerializeActor(Person $person, $expectedJson)
+    #[DataProvider('serializeData')]
+    public function testSerializeActor(Person $person, string $expectedJson): void
     {
         $this->assertJsonStringEqualsJsonString($expectedJson, $this->personSerializer->serializePerson($person));
     }
 
-    public function serializeData()
+    public static function serializeData(): array
     {
-        return $this->buildSerializeTestCases('Person');
+        return self::buildSerializeTestCases('Person');
     }
 
     abstract protected function createPersonSerializer();

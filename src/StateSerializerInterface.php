@@ -28,7 +28,7 @@ interface StateSerializerInterface
      *
      * @return string The serialized state
      */
-    public function serializeState(State $state);
+    public function serializeState(State $state): string;
 
     /**
      * Serializes a collection of states into a JSON encoded string.
@@ -37,25 +37,25 @@ interface StateSerializerInterface
      *
      * @return string The serialized states
      */
-    public function serializeStates(array $states);
+    public function serializeStates(array $states): string;
 
     /**
      * Parses a serialized state.
      *
      * @param array $state The serialized state
-     * @param string $data
+     * @param string|null $data
      *
      * @return State The parsed state
      */
-    public function deserializeState($state, $data = null);
+    public function deserializeState(array $state, ?string $data = null): State;
 
     /**
      * Parses a serialized collection of states.
      *
      * @param string $state The serialized states
-     * @param string $data
+     * @param string|null $data
      *
      * @return State[] The parsed states
      */
-    public function deserializeStates($state, $data = null);
+    public function deserializeStates(string $state, ?string $data = null): array;
 }

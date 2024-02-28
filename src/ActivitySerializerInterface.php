@@ -12,7 +12,6 @@
 namespace Xabbuh\XApi\Serializer;
 
 use Xabbuh\XApi\Model\Activity;
-use Xabbuh\XApi\Serializer\Exception\ActivityDeserializationException;
 use Xabbuh\XApi\Serializer\Exception\ActivitySerializationException;
 
 /**
@@ -31,5 +30,5 @@ interface ActivitySerializerInterface
      *
      * @return string The serialized activity
      */
-    public function serializeActivity(Activity $activity);
+    public function serializeActivity(Activity $activity): string;
 }

@@ -1,8 +1,16 @@
 CHANGELOG
 =========
 
+4.0.0
+-----
+
+* dropped support for PHP < 8.1
+* dropped support for PHPunit < 10.0
+* All dependencies from php-xapi/* are now loaded from forks at `https://github.com/evolution-job/`
+
 3.0.0
 -----
+
 * added an `ActivitySerializerInterface` that abstracts the serialization of an activity
 
 * added a `PersonSerializerInterface` that abstracts the serialization of an activity

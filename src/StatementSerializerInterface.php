@@ -30,7 +30,7 @@ interface StatementSerializerInterface
      *
      * @return string The serialized statement
      */
-    public function serializeStatement(Statement $statement);
+    public function serializeStatement(Statement $statement): string;
 
     /**
      * Serializes a collection of statements into a JSON encoded string.
@@ -41,7 +41,7 @@ interface StatementSerializerInterface
      *
      * @return string The serialized statements
      */
-    public function serializeStatements(array $statements);
+    public function serializeStatements(array $statements): string;
 
     /**
      * Parses a serialized statement.
@@ -51,11 +51,11 @@ interface StatementSerializerInterface
      *                            array with the keys type, the attachment's MIME type, and content, the attachment's raw
      *                            content data)
      *
-     * @throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
-     *
      * @return Statement The parsed statement
+     *@throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
+     *
      */
-    public function deserializeStatement($data, array $attachments = array());
+    public function deserializeStatement(string $data, array $attachments = []): Statement;
 
     /**
      * Parses a serialized collection of statements.
@@ -65,9 +65,9 @@ interface StatementSerializerInterface
      *                            array with the keys type, the attachment's MIME type, and content, the attachment's raw
      *                            content data)
      *
-     * @throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
-     *
      * @return Statement[] The parsed statements
+     *@throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
+     *
      */
-    public function deserializeStatements($data, array $attachments = array());
+    public function deserializeStatements(string $data, array $attachments = []): array;
 }

@@ -11,6 +11,8 @@
 
 namespace Xabbuh\XApi\Serializer\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use Xabbuh\XApi\Model\IRL;
 use Xabbuh\XApi\Model\StatementResult;
 
 /**
@@ -25,27 +27,23 @@ abstract class StatementResultSerializerTest extends SerializerTest
         $this->statementResultSerializer = $this->createStatementResultSerializer();
     }
 
-    /**
-     * @dataProvider serializeData
-     */
-    public function testSerializeStatementResult(StatementResult $statementResult, $expectedJson)
+    #[DataProvider('serializeData')]
+    public function testSerializeStatementResult(StatementResult $statementResult, string $expectedJson): void
     {
         $this->assertJsonStringEqualsJsonString($expectedJson, $this->statementResultSerializer->serializeStatementResult($statementResult));
     }
 
-    public function serializeData()
+    public static function serializeData(): array
     {
-        return $this->buildSerializeTestCases('StatementResult');
+        return self::buildSerializeTestCases('StatementResult');
     }
 
-    /**
-     * @dataProvider deserializeData
-     */
-    public function testDeserializeStatementResult($json, StatementResult $expectedStatementResult)
+    #[DataProvider('deserializeData')]
+    public function testDeserializeStatementResult($json, StatementResult $expectedStatementResult): void
     {
         $statementResult = $this->statementResultSerializer->deserializeStatementResult($json);
 
-        $this->assertInstanceOf('Xabbuh\XApi\Model\StatementResult', $statementResult);
+        $this->assertInstanceOf(StatementResult::class, $statementResult);
 
         $expectedStatements = $expectedStatementResult->getStatements();
         $statements = $statementResult->getStatements();
@@ -56,16 +54,16 @@ abstract class StatementResultSerializerTest extends SerializerTest
             $this->assertTrue($expectedStatement->equals($statements[$key]), 'Statements in result are the same');
         }
 
-        if (null === $expectedStatementResult->getMoreUrlPath()) {
+        if (!$expectedStatementResult->getMoreUrlPath() instanceof IRL) {
             $this->assertNull($statementResult->getMoreUrlPath(), 'The more URL path is null');
         } else {
             $this->assertTrue($expectedStatementResult->getMoreUrlPath()->equals($statementResult->getMoreUrlPath()), 'More URL paths are equal');
         }
     }
 
-    public function deserializeData()
+    public static function deserializeData(): array
     {
-        return $this->buildDeserializeTestCases('StatementResult');
+        return self::buildDeserializeTestCases('StatementResult');
     }
 
     abstract protected function createStatementResultSerializer();

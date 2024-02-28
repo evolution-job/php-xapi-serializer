@@ -11,6 +11,7 @@
 
 namespace Xabbuh\XApi\Serializer\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\Activity;
 
 /**
@@ -20,22 +21,20 @@ abstract class ActivitySerializerTest extends SerializerTest
 {
     private $activitySerializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->activitySerializer = $this->createActivitySerializer();
     }
 
-    /**
-     * @dataProvider serializeData
-     */
-    public function testSerializeActivity(Activity $activity, $expectedJson)
+    #[DataProvider('serializeData')]
+    public function testSerializeActivity(Activity $activity, string $expectedJson): void
     {
         $this->assertJsonStringEqualsJsonString($expectedJson, $this->activitySerializer->serializeActivity($activity));
     }
 
-    public function serializeData()
+    public static function serializeData(): array
     {
-        return $this->buildSerializeTestCases('Activity');
+        return self::buildSerializeTestCases('Activity');
     }
 
     abstract protected function createActivitySerializer();

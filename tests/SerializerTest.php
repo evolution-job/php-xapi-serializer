@@ -15,52 +15,42 @@ use PHPUnit\Framework\TestCase;
 
 abstract class SerializerTest extends TestCase
 {
-    protected function buildSerializeTestCases($objectType)
+    protected static function buildSerializeTestCases(string $objectType): array
     {
-        $tests = array();
+        $tests = [];
 
-        $phpFixturesClass = 'Xabbuh\XApi\DataFixtures\\'.$objectType.'Fixtures';
-        $jsonFixturesClass = 'XApi\Fixtures\Json\\'.$objectType.'JsonFixtures';
+        $phpFixturesClass = 'Xabbuh\XApi\DataFixtures\\' . $objectType . 'Fixtures';
+        $jsonFixturesClass = 'XApi\Fixtures\Json\\' . $objectType . 'JsonFixtures';
         $jsonFixturesMethods = get_class_methods($jsonFixturesClass);
 
         foreach (get_class_methods($phpFixturesClass) as $method) {
-            if (false !== strpos($method, 'ForQuery')) {
+            if (str_contains($method, 'ForQuery')) {
                 continue;
             }
 
             // serialized data will always contain type information
-            if (in_array($method.'WithType', $jsonFixturesMethods)) {
-                $jsonMethod = $method.'WithType';
-            } else {
-                $jsonMethod = $method;
-            }
+            $jsonMethod = in_array($method . 'WithType', $jsonFixturesMethods) ? $method . 'WithType' : $method;
 
-            $tests[$method] = array(
-                call_user_func(array($phpFixturesClass, $method)),
-                call_user_func(array($jsonFixturesClass, $jsonMethod)),
-            );
+            $tests[$method] = [call_user_func([$phpFixturesClass, $method]), call_user_func([$jsonFixturesClass, $jsonMethod]),];
         }
 
         return $tests;
     }
 
-    protected function buildDeserializeTestCases($objectType)
+    protected static function buildDeserializeTestCases(string $objectType): array
     {
-        $tests = array();
+        $tests = [];
 
-        $jsonFixturesClass = 'XApi\Fixtures\Json\\'.$objectType.'JsonFixtures';
-        $phpFixturesClass = 'Xabbuh\XApi\DataFixtures\\'.$objectType.'Fixtures';
+        $jsonFixturesClass = 'XApi\Fixtures\Json\\' . $objectType . 'JsonFixtures';
+        $phpFixturesClass = 'Xabbuh\XApi\DataFixtures\\' . $objectType . 'Fixtures';
 
         foreach (get_class_methods($jsonFixturesClass) as $method) {
             // PHP objects do not contain the type information as a dedicated property
-            if ('WithType' === substr($method, -8)) {
+            if (str_ends_with($method, 'WithType')) {
                 continue;
             }
 
-            $tests[$method] = array(
-                call_user_func(array($jsonFixturesClass, $method)),
-                call_user_func(array($phpFixturesClass, $method)),
-            );
+            $tests[$method] = [call_user_func([$jsonFixturesClass, $method]), call_user_func([$phpFixturesClass, $method]),];
         }
 
         return $tests;

@@ -23,11 +23,11 @@ interface DocumentDataSerializerInterface
     /**
      * Serializes document data into a JSON encoded string.
      *
-     * @param DocumentData $data The document data to serialize
+     * @param DocumentData $documentData The document data to serialize
      *
      * @return string The serialized document data
      */
-    public function serializeDocumentData(DocumentData $data);
+    public function serializeDocumentData(DocumentData $documentData): string;
 
     /**
      * Parses serialized document data.
@@ -36,5 +36,5 @@ interface DocumentDataSerializerInterface
      *
      * @return DocumentData The parsed document data
      */
-    public function deserializeDocumentData($data);
+    public function deserializeDocumentData($data): DocumentData;
 }

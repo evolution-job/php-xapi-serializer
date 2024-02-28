@@ -11,9 +11,11 @@
 
 namespace Xabbuh\XApi\Serializer\Exception;
 
+use DomainException;
+
 /**
  * @author Jérôme Parmentier <jerome.parmentier@acensi.fr>
  */
-abstract class DeserializationException extends \DomainException implements ExceptionInterface
+abstract class DeserializationException extends DomainException implements ExceptionInterface
 {
 }

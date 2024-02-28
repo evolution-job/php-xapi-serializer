@@ -21,98 +21,98 @@ interface SerializerRegistryInterface
     /**
      * Sets the {@link StatementSerializerInterface statement serializer}.
      *
-     * @param StatementSerializerInterface $serializer The serializer
+     * @param StatementSerializerInterface $statementSerializer The serializer
      */
-    public function setStatementSerializer(StatementSerializerInterface $serializer);
+    public function setStatementSerializer(StatementSerializerInterface $statementSerializer);
 
     /**
      * Returns the {@link StatementSerializerInterface statement serializer}.
      *
      * @return StatementSerializerInterface|null The serializer
      */
-    public function getStatementSerializer();
+    public function getStatementSerializer(): ?StatementSerializerInterface;
 
     /**
      * Sets the {@link StatementResultSerializerInterface statement result serializer}.
      *
-     * @param StatementResultSerializerInterface $serializer The serializer
+     * @param StatementResultSerializerInterface $statementResultSerializer The serializer
      */
-    public function setStatementResultSerializer(StatementResultSerializerInterface $serializer);
+    public function setStatementResultSerializer(StatementResultSerializerInterface $statementResultSerializer);
 
     /**
      * Returns the {@link StatementResultSerializerInterface statement result serializer}.
      *
      * @return StatementResultSerializerInterface|null The serializer
      */
-    public function getStatementResultSerializer();
+    public function getStatementResultSerializer(): ?StatementResultSerializerInterface;
 
     /**
      * Sets the {@link ActorSerializerInterface actor serializer}.
      *
-     * @param ActorSerializerInterface $serializer The serializer
+     * @param ActorSerializerInterface $actorSerializer The serializer
      */
-    public function setActorSerializer(ActorSerializerInterface $serializer);
+    public function setActorSerializer(ActorSerializerInterface $actorSerializer);
 
     /**
      * Returns the {@link ActorSerializerInterface actor serializer}.
      *
      * @return ActorSerializerInterface|null The serializer
      */
-    public function getActorSerializer();
+    public function getActorSerializer(): ?ActorSerializerInterface;
 
     /**
      * Sets the {@link DocumentDataSerializerInterface document data serializer}.
      *
-     * @param DocumentDataSerializerInterface $serializer The serializer
+     * @param DocumentDataSerializerInterface $documentDataSerializer The serializer
      */
-    public function setDocumentDataSerializer(DocumentDataSerializerInterface $serializer);
+    public function setDocumentDataSerializer(DocumentDataSerializerInterface $documentDataSerializer);
 
     /**
      * Returns the {@link DocumentDataSerializerInterface document data serializer}.
      *
      * @return DocumentDataSerializerInterface|null The serializer
      */
-    public function getDocumentDataSerializer();
+    public function getDocumentDataSerializer(): ?DocumentDataSerializerInterface;
 
     /**
      * Sets the {@link ActivitySerializerInterface activity serializer}.
      *
-     * @param ActivitySerializerInterface $serializer The serializer
+     * @param ActivitySerializerInterface $activitySerializer The serializer
      */
-    public function setActivitySerializer(ActivitySerializerInterface $serializer);
+    public function setActivitySerializer(ActivitySerializerInterface $activitySerializer);
 
     /**
      * Returns the {@link ActivitySerializerInterface activity serializer}.
      *
      * @return ActivitySerializerInterface|null The serializer
      */
-    public function getActivitySerializer();
+    public function getActivitySerializer(): ?ActivitySerializerInterface;
 
     /**
      * Sets the {@link PersonSerializerInterface person serializer}.
      *
-     * @param PersonSerializerInterface $serializer The serializer
+     * @param PersonSerializerInterface $personSerializer The serializer
      */
-    public function setPersonSerializer(PersonSerializerInterface $serializer);
+    public function setPersonSerializer(PersonSerializerInterface $personSerializer);
 
     /**
      * Returns the {@link PersonSerializerInterface person serializer}.
      *
      * @return PersonSerializerInterface|null The serializer
      */
-    public function getPersonSerializer();
+    public function getPersonSerializer(): ?PersonSerializerInterface;
 
     /**
      * Sets the {@link StateDocumentSerializerInterface state document serializer}.
      *
-     * @param StateDocumentSerializerInterface $serializer The serializer
+     * @param StateDocumentSerializerInterface $stateDocumentSerializer The serializer
      */
-    public function setStateDocumentSerializer(StateDocumentSerializerInterface $serializer);
+    public function setStateDocumentSerializer(StateDocumentSerializerInterface $stateDocumentSerializer);
 
     /**
      * Returns the {@link StateDocumentSerializerInterface state document serializer}.
      *
      * @return StateDocumentSerializerInterface|null The serializer
      */
-    public function getStateDocumentSerializer();
+    public function getStateDocumentSerializer(): ?StateDocumentSerializerInterface;
 }

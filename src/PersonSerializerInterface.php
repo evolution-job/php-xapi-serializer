@@ -30,5 +30,5 @@ interface PersonSerializerInterface
      *
      * @return string The serialized person
      */
-    public function serializePerson(Person $person);
+    public function serializePerson(Person $person): string;
 }

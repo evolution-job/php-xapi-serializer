@@ -11,6 +11,7 @@
 
 namespace Xabbuh\XApi\Serializer\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\StateDocument;
 
 /**
@@ -20,38 +21,34 @@ abstract class StateDocumentSerializerTest extends SerializerTest
 {
     private $stateDocumentSerializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->stateDocumentSerializer = $this->createStateDocumentSerializer();
     }
 
-    /**
-     * @dataProvider serializeData
-     */
-    public function testSerializeStateDocument(StateDocument $stateDocument, $expectedJson)
+    #[DataProvider('serializeData')]
+    public function testSerializeStateDocument(StateDocument $stateDocument, string $expectedJson): void
     {
         $this->assertJsonStringEqualsJsonString($expectedJson, $this->stateDocumentSerializer->serializeStateDocument($stateDocument));
     }
 
-    public function serializeData()
+    public static function serializeData(): array
     {
-        return $this->buildSerializeTestCases('StateDocument');
+        return self::buildSerializeTestCases('StateDocument');
     }
 
-    /**
-     * @dataProvider deserializeData
-     */
-    public function testDeserializeStateDocument($json, StateDocument $expectedStateDocument)
+    #[DataProvider('deserializeData')]
+    public function testDeserializeStateDocument($json, StateDocument $expectedStateDocument): void
     {
         $stateDocument = $this->stateDocumentSerializer->deserializeStateDocument($json);
 
-        $this->assertInstanceOf('Xabbuh\XApi\Model\StateDocument', $stateDocument);
+        $this->assertInstanceOf(StateDocument::class, $stateDocument);
         $this->assertTrue($expectedStateDocument->equals($stateDocument), 'Deserialized state document has the expected properties');
     }
 
-    public function deserializeData()
+    public static function deserializeData(): array
     {
-        return $this->buildDeserializeTestCases('StateDocument');
+        return self::buildDeserializeTestCases('StateDocument');
     }
 
     abstract protected function createStateDocumentSerializer();

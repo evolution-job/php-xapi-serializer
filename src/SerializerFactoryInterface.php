@@ -20,50 +20,36 @@ interface SerializerFactoryInterface
 {
     /**
      * Creates a statement serializer.
-     *
-     * @return StatementSerializerInterface
      */
-    public function createStatementSerializer();
+    public function createStatementSerializer(): StatementSerializerInterface;
 
     /**
      * Creates a statement result serializer.
-     *
-     * @return StatementResultSerializerInterface
      */
-    public function createStatementResultSerializer();
+    public function createStatementResultSerializer(): StatementResultSerializerInterface;
 
     /**
      * Creates an actor serializer.
-     *
-     * @return ActorSerializerInterface
      */
-    public function createActorSerializer();
+    public function createActorSerializer(): ActorSerializerInterface;
 
     /**
      * Creates a document data serializer.
-     *
-     * @return DocumentDataSerializerInterface
      */
-    public function createDocumentDataSerializer();
+    public function createDocumentDataSerializer(): DocumentDataSerializerInterface;
 
     /**
      * Creates an activity serializer.
-     *
-     * @return ActivitySerializerInterface
      */
-    public function createActivitySerializer();
+    public function createActivitySerializer(): ActivitySerializerInterface;
 
     /**
      * Creates a person serializer.
-     *
-     * @return PersonSerializerInterface
      */
-    public function createPersonSerializer();
+    public function createPersonSerializer(): PersonSerializerInterface;
 
     /**
      * Creates a state document serializer.
-     *
-     * @return StateDocumentSerializerInterface
      */
-    public function createStateDocumentSerializer();
+    public function createStateDocumentSerializer(): StateDocumentSerializerInterface;
 }
