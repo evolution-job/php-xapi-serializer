@@ -26,9 +26,9 @@ interface ActivitySerializerInterface
      *
      * @param Activity $activity The activity to serialize
      *
+     * @return string The serialized activity
      * @throws ActivitySerializationException When the serialization fails
      *
-     * @return string The serialized activity
      */
     public function serializeActivity(Activity $activity): string;
 }

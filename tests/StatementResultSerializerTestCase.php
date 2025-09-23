@@ -14,13 +14,14 @@ namespace Xabbuh\XApi\Serializer\Tests;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\IRL;
 use Xabbuh\XApi\Model\StatementResult;
+use Xabbuh\XApi\Serializer\StatementResultSerializerInterface;
 
 /**
  * @author Christian Flothmann <christian.flothmann@xabbuh.de>
  */
-abstract class StatementResultSerializerTest extends SerializerTest
+abstract class StatementResultSerializerTestCase extends SerializerTestCase
 {
-    private $statementResultSerializer;
+    private StatementResultSerializerInterface $statementResultSerializer;
 
     protected function setUp(): void
     {
@@ -66,5 +67,5 @@ abstract class StatementResultSerializerTest extends SerializerTest
         return self::buildDeserializeTestCases('StatementResult');
     }
 
-    abstract protected function createStatementResultSerializer();
+    abstract protected function createStatementResultSerializer(): StatementResultSerializerInterface;
 }

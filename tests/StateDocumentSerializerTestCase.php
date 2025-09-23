@@ -13,13 +13,14 @@ namespace Xabbuh\XApi\Serializer\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\StateDocument;
+use Xabbuh\XApi\Serializer\StateDocumentSerializerInterface;
 
 /**
  * @author Jérôme Parmentier <jerome.parmentier@acensi.fr>
  */
-abstract class StateDocumentSerializerTest extends SerializerTest
+abstract class StateDocumentSerializerTestCase extends SerializerTestCase
 {
-    private $stateDocumentSerializer;
+    private StateDocumentSerializerInterface $stateDocumentSerializer;
 
     protected function setUp(): void
     {
@@ -51,5 +52,5 @@ abstract class StateDocumentSerializerTest extends SerializerTest
         return self::buildDeserializeTestCases('StateDocument');
     }
 
-    abstract protected function createStateDocumentSerializer();
+    abstract protected function createStateDocumentSerializer(): StateDocumentSerializerInterface;
 }

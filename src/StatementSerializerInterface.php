@@ -26,9 +26,9 @@ interface StatementSerializerInterface
      *
      * @param Statement $statement The statement to serialize
      *
+     * @return string The serialized statement
      * @throws UnsupportedStatementVersionException When the version of the statement to be serialized is not supported
      *
-     * @return string The serialized statement
      */
     public function serializeStatement(Statement $statement): string;
 
@@ -37,22 +37,22 @@ interface StatementSerializerInterface
      *
      * @param Statement[] $statements The statements to serialize
      *
+     * @return string The serialized statements
      * @throws UnsupportedStatementVersionException When the version of the statement to be serialized is not supported
      *
-     * @return string The serialized statements
      */
     public function serializeStatements(array $statements): string;
 
     /**
      * Parses a serialized statement.
      *
-     * @param string $data        The serialized statement
-     * @param array  $attachments The raw attachment data, a mapping of SHA-2 hashes to attachments data (the data is an
+     * @param string $data The serialized statement
+     * @param array $attachments The raw attachment data, a mapping of SHA-2 hashes to attachments data (the data is an
      *                            array with the keys type, the attachment's MIME type, and content, the attachment's raw
      *                            content data)
      *
      * @return Statement The parsed statement
-     *@throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
+     * @throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
      *
      */
     public function deserializeStatement(string $data, array $attachments = []): Statement;
@@ -60,13 +60,13 @@ interface StatementSerializerInterface
     /**
      * Parses a serialized collection of statements.
      *
-     * @param string $data        The serialized statements
-     * @param array  $attachments The raw attachment data, a mapping of SHA-2 hashes to attachments data (the data is an
+     * @param string $data The serialized statements
+     * @param array $attachments The raw attachment data, a mapping of SHA-2 hashes to attachments data (the data is an
      *                            array with the keys type, the attachment's MIME type, and content, the attachment's raw
      *                            content data)
      *
      * @return Statement[] The parsed statements
-     *@throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
+     * @throws UnsupportedStatementVersionException When the version of the serialized statement is not supported
      *
      */
     public function deserializeStatements(string $data, array $attachments = []): array;

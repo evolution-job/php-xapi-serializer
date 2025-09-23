@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+4.1.0
+-----
+
+* php-xapi/model ^4.0
+* php-xapi/json-test-fixtures ^2.3
+* php-xapi/test-fixtures ^1.3
+* dropped support for PHP < 8.4
+* dropped support for PHPunit < 11.0
+
+
 4.0.0
 -----
 

@@ -32,12 +32,12 @@ interface StatementResultSerializerInterface
     /**
      * Parses a serialized statement result.
      *
-     * @param string $data        The serialized statement result
-     * @param array  $attachments The raw attachment data, a mapping of SHA-2 hashes to attachments data (the data is an
+     * @param string $data The serialized statement result
+     * @param array $attachments The raw attachment data, a mapping of SHA-2 hashes to attachments data (the data is an
      *                            array with the keys type, the attachment's MIME type, and content, the attachment's raw
      *                            content data)
      *
      * @return StatementResult The parsed statement result
      */
-    public function deserializeStatementResult($data, array $attachments = []): StatementResult;
+    public function deserializeStatementResult(string $data, array $attachments = []): StatementResult;
 }

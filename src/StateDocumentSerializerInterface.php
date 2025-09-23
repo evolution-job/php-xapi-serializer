@@ -25,8 +25,8 @@ interface StateDocumentSerializerInterface
     /**
      * Serializes a state document into a JSON encoded string.
      *
-     * @throws StateDocumentSerializationException When the serialization fails
      * @return string The serialized state document
+     * @throws StateDocumentSerializationException When the serialization fails
      */
     public function serializeStateDocument(StateDocument $stateDocument): string;
 
@@ -34,8 +34,8 @@ interface StateDocumentSerializerInterface
      * Parses a serialized state document.
      *
      * @param string $data The serialized state document
-     * @throws StateDocumentDeserializationException When the deserialization fails
      * @return StateDocument the parsed state document
+     * @throws StateDocumentDeserializationException When the deserialization fails
      */
-    public function deserializeStateDocument($data): StateDocument;
+    public function deserializeStateDocument(string $data): StateDocument;
 }

@@ -43,7 +43,6 @@ interface StateSerializerInterface
      * Parses a serialized state.
      *
      * @param array $state The serialized state
-     * @param string|null $data
      *
      * @return State The parsed state
      */
@@ -53,7 +52,6 @@ interface StateSerializerInterface
      * Parses a serialized collection of states.
      *
      * @param string $state The serialized states
-     * @param string|null $data
      *
      * @return State[] The parsed states
      */
