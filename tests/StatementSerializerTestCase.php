@@ -14,14 +14,15 @@ namespace Xabbuh\XApi\Serializer\Tests;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\DataFixtures\StatementFixtures;
 use Xabbuh\XApi\Model\Statement;
+use Xabbuh\XApi\Serializer\StatementSerializerInterface;
 use XApi\Fixtures\Json\StatementJsonFixtures;
 
 /**
  * @author Christian Flothmann <christian.flothmann@xabbuh.de>
  */
-abstract class StatementSerializerTest extends SerializerTest
+abstract class StatementSerializerTestCase extends SerializerTestCase
 {
-    private $statementSerializer;
+    private StatementSerializerInterface $statementSerializer;
 
     protected function setUp(): void
     {
@@ -100,5 +101,5 @@ abstract class StatementSerializerTest extends SerializerTest
         }
     }
 
-    abstract protected function createStatementSerializer();
+    abstract protected function createStatementSerializer(): StatementSerializerInterface;
 }

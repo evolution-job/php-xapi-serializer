@@ -36,5 +36,5 @@ interface DocumentDataSerializerInterface
      *
      * @return DocumentData The parsed document data
      */
-    public function deserializeDocumentData($data): DocumentData;
+    public function deserializeDocumentData(string $data): DocumentData;
 }

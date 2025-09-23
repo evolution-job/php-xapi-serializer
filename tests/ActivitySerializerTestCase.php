@@ -13,13 +13,14 @@ namespace Xabbuh\XApi\Serializer\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\Activity;
+use Xabbuh\XApi\Serializer\ActivitySerializerInterface;
 
 /**
  * @author Jérôme Parmentier <jerome.parmentier@acensi.fr>
  */
-abstract class ActivitySerializerTest extends SerializerTest
+abstract class ActivitySerializerTestCase extends SerializerTestCase
 {
-    private $activitySerializer;
+    private ActivitySerializerInterface $activitySerializer;
 
     protected function setUp(): void
     {
@@ -37,5 +38,5 @@ abstract class ActivitySerializerTest extends SerializerTest
         return self::buildSerializeTestCases('Activity');
     }
 
-    abstract protected function createActivitySerializer();
+    abstract protected function createActivitySerializer(): ActivitySerializerInterface;
 }

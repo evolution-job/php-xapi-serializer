@@ -17,7 +17,7 @@ use Xabbuh\XApi\Model\State;
 /**
  * Serialize and deserialize {@link State states}.
  *
- * @author Jérôme Parmentier <jerome.parmentier@acensi.fr>
+ * @author Mathieu Boldo <mathieu.boldo@entrili.com>
  */
 interface StateSerializerInterface
 {
@@ -31,31 +31,11 @@ interface StateSerializerInterface
     public function serializeState(State $state): string;
 
     /**
-     * Serializes a collection of states into a JSON encoded string.
-     *
-     * @param State[] $states The states to serialize
-     *
-     * @return string The serialized states
-     */
-    public function serializeStates(array $states): string;
-
-    /**
      * Parses a serialized state.
      *
-     * @param array $state The serialized state
-     * @param string|null $data
+     * @param string $state The serialized state
      *
      * @return State The parsed state
      */
-    public function deserializeState(array $state, ?string $data = null): State;
-
-    /**
-     * Parses a serialized collection of states.
-     *
-     * @param string $state The serialized states
-     * @param string|null $data
-     *
-     * @return State[] The parsed states
-     */
-    public function deserializeStates(string $state, ?string $data = null): array;
+    public function deserializeState(string $state, ?string $data = null): State;
 }

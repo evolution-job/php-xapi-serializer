@@ -13,13 +13,14 @@ namespace Xabbuh\XApi\Serializer\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\Actor;
+use Xabbuh\XApi\Serializer\ActorSerializerInterface;
 
 /**
  * @author Christian Flothmann <christian.flothmann@xabbuh.de>
  */
-abstract class ActorSerializerTest extends SerializerTest
+abstract class ActorSerializerTestCase extends SerializerTestCase
 {
-    private $actorSerializer;
+    private ActorSerializerInterface $actorSerializer;
 
     protected function setUp(): void
     {
@@ -51,5 +52,5 @@ abstract class ActorSerializerTest extends SerializerTest
         return self::buildDeserializeTestCases('Actor');
     }
 
-    abstract protected function createActorSerializer();
+    abstract protected function createActorSerializer(): ActorSerializerInterface;
 }

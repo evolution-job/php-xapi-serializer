@@ -36,5 +36,5 @@ interface ActorSerializerInterface
      *
      * @return Actor The parsed actor
      */
-    public function deserializeActor($data): Actor;
+    public function deserializeActor(string $data): Actor;
 }

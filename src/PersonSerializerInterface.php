@@ -26,9 +26,9 @@ interface PersonSerializerInterface
      *
      * @param Person $person The person to serialize
      *
+     * @return string The serialized person
      * @throws PersonSerializationException When the serialization fails
      *
-     * @return string The serialized person
      */
     public function serializePerson(Person $person): string;
 }

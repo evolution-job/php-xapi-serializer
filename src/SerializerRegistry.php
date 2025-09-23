@@ -18,6 +18,9 @@ namespace Xabbuh\XApi\Serializer;
  */
 final class SerializerRegistry implements SerializerRegistryInterface
 {
+    // The state serializer
+    private ?StateSerializerInterface $stateSerializer = null;
+
     // The statement serializer
     private ?StatementSerializerInterface $statementSerializer = null;
 
@@ -42,9 +45,17 @@ final class SerializerRegistry implements SerializerRegistryInterface
     /**
      * {@inheritDoc}
      */
-    public function setStatementSerializer(StatementSerializerInterface $statementSerializer): void
+    public function getStateSerializer(): ?StateSerializerInterface
     {
-        $this->statementSerializer = $statementSerializer;
+        return $this->stateSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStateSerializer(StateSerializerInterface $stateSerializer): void
+    {
+        $this->stateSerializer = $stateSerializer;
     }
 
     /**
@@ -58,9 +69,9 @@ final class SerializerRegistry implements SerializerRegistryInterface
     /**
      * {@inheritDoc}
      */
-    public function setStatementResultSerializer(StatementResultSerializerInterface $statementResultSerializer): void
+    public function setStatementSerializer(StatementSerializerInterface $statementSerializer): void
     {
-        $this->statementResultSerializer = $statementResultSerializer;
+        $this->statementSerializer = $statementSerializer;
     }
 
     /**
@@ -74,9 +85,9 @@ final class SerializerRegistry implements SerializerRegistryInterface
     /**
      * {@inheritDoc}
      */
-    public function setActorSerializer(ActorSerializerInterface $actorSerializer): void
+    public function setStatementResultSerializer(StatementResultSerializerInterface $statementResultSerializer): void
     {
-        $this->actorSerializer = $actorSerializer;
+        $this->statementResultSerializer = $statementResultSerializer;
     }
 
     /**
@@ -90,9 +101,9 @@ final class SerializerRegistry implements SerializerRegistryInterface
     /**
      * {@inheritDoc}
      */
-    public function setDocumentDataSerializer(DocumentDataSerializerInterface $documentDataSerializer): void
+    public function setActorSerializer(ActorSerializerInterface $actorSerializer): void
     {
-        $this->documentDataSerializer = $documentDataSerializer;
+        $this->actorSerializer = $actorSerializer;
     }
 
     /**
@@ -104,11 +115,11 @@ final class SerializerRegistry implements SerializerRegistryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function setActivitySerializer(ActivitySerializerInterface $activitySerializer): void
+    public function setDocumentDataSerializer(DocumentDataSerializerInterface $documentDataSerializer): void
     {
-        $this->activitySerializer = $activitySerializer;
+        $this->documentDataSerializer = $documentDataSerializer;
     }
 
     /**
@@ -122,9 +133,9 @@ final class SerializerRegistry implements SerializerRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function setPersonSerializer(PersonSerializerInterface $personSerializer): void
+    public function setActivitySerializer(ActivitySerializerInterface $activitySerializer): void
     {
-        $this->personSerializer = $personSerializer;
+        $this->activitySerializer = $activitySerializer;
     }
 
     /**
@@ -138,9 +149,9 @@ final class SerializerRegistry implements SerializerRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function setStateDocumentSerializer(StateDocumentSerializerInterface $stateDocumentSerializer): void
+    public function setPersonSerializer(PersonSerializerInterface $personSerializer): void
     {
-        $this->stateDocumentSerializer = $stateDocumentSerializer;
+        $this->personSerializer = $personSerializer;
     }
 
     /**
@@ -149,5 +160,13 @@ final class SerializerRegistry implements SerializerRegistryInterface
     public function getStateDocumentSerializer(): ?StateDocumentSerializerInterface
     {
         return $this->stateDocumentSerializer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStateDocumentSerializer(StateDocumentSerializerInterface $stateDocumentSerializer): void
+    {
+        $this->stateDocumentSerializer = $stateDocumentSerializer;
     }
 }

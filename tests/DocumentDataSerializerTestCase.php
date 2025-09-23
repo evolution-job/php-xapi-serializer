@@ -13,14 +13,15 @@ namespace Xabbuh\XApi\Serializer\Tests;
 
 use Xabbuh\XApi\DataFixtures\DocumentFixtures;
 use Xabbuh\XApi\Model\DocumentData;
+use Xabbuh\XApi\Serializer\DocumentDataSerializerInterface;
 use XApi\Fixtures\Json\DocumentJsonFixtures;
 
 /**
  * @author Christian Flothmann <christian.flothmann@xabbuh.de>
  */
-abstract class DocumentDataSerializerTest extends SerializerTest
+abstract class DocumentDataSerializerTestCase extends SerializerTestCase
 {
-    private $documentDataSerializer;
+    private DocumentDataSerializerInterface $documentDataSerializer;
 
     protected function setUp(): void
     {
@@ -46,5 +47,5 @@ abstract class DocumentDataSerializerTest extends SerializerTest
         );
     }
 
-    abstract protected function createDocumentDataSerializer();
+    abstract protected function createDocumentDataSerializer(): DocumentDataSerializerInterface;
 }

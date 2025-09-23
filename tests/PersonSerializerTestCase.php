@@ -13,13 +13,14 @@ namespace Xabbuh\XApi\Serializer\Tests;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use Xabbuh\XApi\Model\Person;
+use Xabbuh\XApi\Serializer\PersonSerializerInterface;
 
 /**
  * @author Christian Flothmann <christian.flothmann@xabbuh.de>
  */
-abstract class PersonSerializerTest extends SerializerTest
+abstract class PersonSerializerTestCase extends SerializerTestCase
 {
-    private $personSerializer;
+    private PersonSerializerInterface $personSerializer;
 
     protected function setUp(): void
     {
@@ -37,5 +38,5 @@ abstract class PersonSerializerTest extends SerializerTest
         return self::buildSerializeTestCases('Person');
     }
 
-    abstract protected function createPersonSerializer();
+    abstract protected function createPersonSerializer(): PersonSerializerInterface;
 }
