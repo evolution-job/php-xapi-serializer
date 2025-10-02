@@ -18,6 +18,9 @@ namespace Xabbuh\XApi\Serializer;
  */
 final class SerializerRegistry implements SerializerRegistryInterface
 {
+    // The state serializer
+    private ?StateSerializerInterface $stateSerializer = null;
+
     // The statement serializer
     private ?StatementSerializerInterface $statementSerializer = null;
 
@@ -38,6 +41,22 @@ final class SerializerRegistry implements SerializerRegistryInterface
 
     // The person serializer
     private ?PersonSerializerInterface $personSerializer = null;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStateSerializer(): ?StateSerializerInterface
+    {
+        return $this->stateSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStateSerializer(StateSerializerInterface $stateSerializer): void
+    {
+        $this->stateSerializer = $stateSerializer;
+    }
 
     /**
      * {@inheritDoc}

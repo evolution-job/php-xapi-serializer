@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+4.1.1
+-----
+
+* add `StateSerializerInterface` and update `SerializerRegistry`
+
 4.1.0
 -----
 

@@ -19,6 +19,20 @@ namespace Xabbuh\XApi\Serializer;
 interface SerializerRegistryInterface
 {
     /**
+     * Sets the {@link StateSerializerInterface state serializer}.
+     *
+     * @param StateSerializerInterface $stateSerializer The serializer
+     */
+    public function setStateSerializer(StateSerializerInterface $stateSerializer);
+
+    /**
+     * Returns the {@link StateSerializerInterface state serializer}.
+     *
+     * @return StateSerializerInterface|null The serializer
+     */
+    public function getStateSerializer(): ?StateSerializerInterface;
+
+    /**
      * Sets the {@link StatementSerializerInterface statement serializer}.
      *
      * @param StatementSerializerInterface $statementSerializer The serializer
