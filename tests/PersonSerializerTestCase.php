@@ -28,7 +28,7 @@ abstract class PersonSerializerTestCase extends SerializerTestCase
     }
 
     #[DataProvider('serializeData')]
-    public function testSerializeActor(Person $person, string $expectedJson): void
+    public function testSerializePerson(Person $person, string $expectedJson): void
     {
         $this->assertJsonStringEqualsJsonString($expectedJson, $this->personSerializer->serializePerson($person));
     }

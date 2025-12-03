@@ -10,17 +10,13 @@ use Xabbuh\XApi\Serializer\PersonSerializerInterface;
 use Xabbuh\XApi\Serializer\StateDocumentSerializerInterface;
 use Xabbuh\XApi\Serializer\StatementResultSerializerInterface;
 use Xabbuh\XApi\Serializer\StatementSerializerInterface;
+use Xabbuh\XApi\Serializer\StateSerializerInterface;
 
 abstract class SerializerFactoryInterfaceSpec extends ObjectBehavior
 {
-    public function it_creates_a_statement_serializer(): void
+    public function it_creates_an_activity_serializer(): void
     {
-        $this->createStatementSerializer()->shouldHaveType(StatementSerializerInterface::class);
-    }
-
-    public function it_creates_a_statement_result_serializer(): void
-    {
-        $this->createStatementResultSerializer()->shouldHaveType(StatementResultSerializerInterface::class);
+        $this->createActivitySerializer()->shouldHaveType(ActivitySerializerInterface::class);
     }
 
     public function it_creates_an_actor_serializer(): void
@@ -33,11 +29,6 @@ abstract class SerializerFactoryInterfaceSpec extends ObjectBehavior
         $this->createDocumentDataSerializer()->shouldHaveType(DocumentDataSerializerInterface::class);
     }
 
-    public function it_creates_an_activity_serializer(): void
-    {
-        $this->createActivitySerializer()->shouldHaveType(ActivitySerializerInterface::class);
-    }
-
     public function it_creates_a_person_serializer(): void
     {
         $this->createPersonSerializer()->shouldHaveType(PersonSerializerInterface::class);
@@ -46,5 +37,20 @@ abstract class SerializerFactoryInterfaceSpec extends ObjectBehavior
     public function it_creates_a_state_document_serializer(): void
     {
         $this->createStateDocumentSerializer()->shouldHaveType(StateDocumentSerializerInterface::class);
+    }
+
+    public function it_creates_a_statement_result_serializer(): void
+    {
+        $this->createStatementResultSerializer()->shouldHaveType(StatementResultSerializerInterface::class);
+    }
+
+    public function it_creates_a_statement_serializer(): void
+    {
+        $this->createStatementSerializer()->shouldHaveType(StatementSerializerInterface::class);
+    }
+
+    public function it_creates_a_state_serializer(): void
+    {
+        $this->createStateSerializer()->shouldHaveType(StateSerializerInterface::class);
     }
 }

@@ -19,14 +19,9 @@ namespace Xabbuh\XApi\Serializer;
 interface SerializerFactoryInterface
 {
     /**
-     * Creates a statement serializer.
+     * Creates an activity serializer.
      */
-    public function createStatementSerializer(): StatementSerializerInterface;
-
-    /**
-     * Creates a statement result serializer.
-     */
-    public function createStatementResultSerializer(): StatementResultSerializerInterface;
+    public function createActivitySerializer(): ActivitySerializerInterface;
 
     /**
      * Creates an actor serializer.
@@ -38,10 +33,6 @@ interface SerializerFactoryInterface
      */
     public function createDocumentDataSerializer(): DocumentDataSerializerInterface;
 
-    /**
-     * Creates an activity serializer.
-     */
-    public function createActivitySerializer(): ActivitySerializerInterface;
 
     /**
      * Creates a person serializer.
@@ -52,4 +43,19 @@ interface SerializerFactoryInterface
      * Creates a state document serializer.
      */
     public function createStateDocumentSerializer(): StateDocumentSerializerInterface;
+
+    /**
+     * Creates a statement result serializer.
+     */
+    public function createStatementResultSerializer(): StatementResultSerializerInterface;
+
+    /**
+     * Creates a statement serializer.
+     */
+    public function createStatementSerializer(): StatementSerializerInterface;
+
+    /**
+     * Creates a state serializer.
+     */
+    public function createStateSerializer(): StateSerializerInterface;
 }

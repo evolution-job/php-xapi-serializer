@@ -44,7 +44,8 @@ abstract class StateDocumentSerializerTestCase extends SerializerTestCase
         $stateDocument = $this->stateDocumentSerializer->deserializeStateDocument($json);
 
         $this->assertInstanceOf(StateDocument::class, $stateDocument);
-        $this->assertTrue($expectedStateDocument->equals($stateDocument), 'Deserialized state document has the expected properties');
+        $this->assertTrue($expectedStateDocument->getState()->equals($stateDocument->getState()), 'Deserialized state has the expected properties');
+        $this->assertEquals($expectedStateDocument->getData(), $stateDocument->getData(), 'Deserialized document has the expected properties');
     }
 
     public static function deserializeData(): array

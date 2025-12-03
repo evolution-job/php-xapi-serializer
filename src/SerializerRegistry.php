@@ -18,14 +18,8 @@ namespace Xabbuh\XApi\Serializer;
  */
 final class SerializerRegistry implements SerializerRegistryInterface
 {
-    // The state serializer
-    private ?StateSerializerInterface $stateSerializer = null;
-
-    // The statement serializer
-    private ?StatementSerializerInterface $statementSerializer = null;
-
-    // The statement result serializer
-    private ?StatementResultSerializerInterface $statementResultSerializer = null;
+    // The activity serializer
+    private ?ActivitySerializerInterface $activitySerializer = null;
 
     // The actor serializer
     private ?ActorSerializerInterface $actorSerializer = null;
@@ -33,61 +27,35 @@ final class SerializerRegistry implements SerializerRegistryInterface
     // The document data serializer
     private ?DocumentDataSerializerInterface $documentDataSerializer = null;
 
-    // The activity serializer
-    private ?ActivitySerializerInterface $activitySerializer = null;
+    // The person serializer
+    private ?PersonSerializerInterface $personSerializer = null;
 
     // The state document serializer
     private ?StateDocumentSerializerInterface $stateDocumentSerializer = null;
 
-    // The person serializer
-    private ?PersonSerializerInterface $personSerializer = null;
+    // The statement result serializer
+    private ?StatementResultSerializerInterface $statementResultSerializer = null;
+
+    // The statement serializer
+    private ?StatementSerializerInterface $statementSerializer = null;
+
+    // The state serializer
+    private ?StateSerializerInterface $stateSerializer = null;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function getStateSerializer(): ?StateSerializerInterface
+    public function getActivitySerializer(): ?ActivitySerializerInterface
     {
-        return $this->stateSerializer;
+        return $this->activitySerializer;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function setStateSerializer(StateSerializerInterface $stateSerializer): void
+    public function setActivitySerializer(ActivitySerializerInterface $activitySerializer): void
     {
-        $this->stateSerializer = $stateSerializer;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getStatementSerializer(): ?StatementSerializerInterface
-    {
-        return $this->statementSerializer;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setStatementSerializer(StatementSerializerInterface $statementSerializer): void
-    {
-        $this->statementSerializer = $statementSerializer;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getStatementResultSerializer(): ?StatementResultSerializerInterface
-    {
-        return $this->statementResultSerializer;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setStatementResultSerializer(StatementResultSerializerInterface $statementResultSerializer): void
-    {
-        $this->statementResultSerializer = $statementResultSerializer;
+        $this->activitySerializer = $activitySerializer;
     }
 
     /**
@@ -125,22 +93,6 @@ final class SerializerRegistry implements SerializerRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function getActivitySerializer(): ?ActivitySerializerInterface
-    {
-        return $this->activitySerializer;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setActivitySerializer(ActivitySerializerInterface $activitySerializer): void
-    {
-        $this->activitySerializer = $activitySerializer;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getPersonSerializer(): ?PersonSerializerInterface
     {
         return $this->personSerializer;
@@ -168,5 +120,53 @@ final class SerializerRegistry implements SerializerRegistryInterface
     public function setStateDocumentSerializer(StateDocumentSerializerInterface $stateDocumentSerializer): void
     {
         $this->stateDocumentSerializer = $stateDocumentSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatementResultSerializer(): ?StatementResultSerializerInterface
+    {
+        return $this->statementResultSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStatementResultSerializer(StatementResultSerializerInterface $statementResultSerializer): void
+    {
+        $this->statementResultSerializer = $statementResultSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStatementSerializer(): ?StatementSerializerInterface
+    {
+        return $this->statementSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStatementSerializer(StatementSerializerInterface $statementSerializer): void
+    {
+        $this->statementSerializer = $statementSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStateSerializer(): ?StateSerializerInterface
+    {
+        return $this->stateSerializer;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStateSerializer(StateSerializerInterface $stateSerializer): void
+    {
+        $this->stateSerializer = $stateSerializer;
     }
 }
